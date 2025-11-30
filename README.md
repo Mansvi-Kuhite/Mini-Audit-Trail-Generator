@@ -1,44 +1,100 @@
+Mini Audit Trail Generator
+A modern web-based version tracking system that records every change you make to text, highlights differences, and maintains a full audit trail.
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+🔗 Live Demo:
+👉 https://mini-audit-trail-generator-iami.onrender.com
 
-## Getting Started
+🚀 Features
+✔ Save multiple versions of text
+✔ Track added and removed words
+✔ Highlight changes (GitHub-style)
+✔ Delete individual versions
+✔ Download logs as CSV and JSON
+✔ Print or Save as PDF
+✔ Light & Dark mode
+✔ Clean modern UI
+✔ Persistent storage using JSON file
+✔ Fully functional REST API
 
-First, run the development server:
+🛠 Tech Stack
+Next.js (Pages Router)
+React.js
+Node.js
+File system JSON storage
+Render Web Service
+Custom diff algorithm
 
-```bash
+Folder Structure
+src/
+ ├── components/
+ │   ├── Navbar.js
+ │   └── DiffViewer.js
+ ├── lib/
+ │   └── diff.js
+ ├── pages/
+ │   ├── _app.js
+ │   ├── index.js
+ │   └── api/
+ │       ├── save-version.js
+ │       ├── versions.js
+ │       └── delete-version.js
+ ├── styles/
+ │   └── global.css
+ └── utils/
+     └── downloads.js
+
+data/
+ └── versions.json
+
+Local Setup
+Clone the repo:
+git clone https://github.com/Mansvi-Kuhite/Mini-Audit-Trail-Generator.git
+cd Mini-Audit-Trail-Generator
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🌐 Deployment (Render)
+Your app uses:
+render-build.sh (custom build script)
+Node version 20.x
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Render Build Command:
+./render-build.sh
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Render Start Command:
+npm start
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+📡 API Endpoints
+POST /api/save-version
+Save a new version.
+GET /api/versions
+Fetch all versions.
+DELETE /api/delete-version?id=UUID
+Delete a specific version.
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🧠 Diff Algorithm
+Your diff logic:
 
-## Learn More
+Normalize words
+Split content into tokens
+Compare old vs new
+Compute:
+Added words
+Removed words
+Save details in JSON file
 
-To learn more about Next.js, take a look at the following resources:
+📄 Data Storage
+Stored in:
+data/versions.json
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
-
-# Mini-Audit-Trail-Generator
->>>>>>> 7a73c31f783e86ccf7a4b12bf262367b38a64e67
+Each version:
+{
+  "id": "uuid",
+  "timestamp": "",
+  "addedWords": [],
+  "removedWords": [],
+  "oldLength": 0,
+  "newLength": 0,
+  "contentSnapshot": ""
+}
