@@ -8,6 +8,10 @@
     "start": "next start",
     "lint": "eslint"
   },
+  "engines": {
+  "node": "20.x"
+},
+
   "dependencies": {
     "dayjs": "^1.11.19",
     "next": "16.0.5",
